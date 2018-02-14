@@ -1,0 +1,35 @@
+import tensorflow as tf
+
+# model paremeters
+w=tf.constant(0.1)
+b=tf.constant(0.2)
+
+# input and output
+x= tf.placeholder(tf.float32)
+
+
+# out[ut is known(standard output to be compared)
+
+
+# result come after executing the model
+liner_model = w*x+b
+
+# value of y feed when run the session   and actual output
+y= tf.placeholder(tf.float32)
+
+d=0.23
+squared_data=tf.square(liner_model-y)
+lossss =tf.reduce_sum(squared_data)
+# optimizer   and .01 is learning rate
+optimizer= tf.train.GradientDescentOptimizer(d)
+train= optimizer.minimize(lossss)
+
+
+init = tf.global_variables_initializer()
+# with tf.Session() as sess:
+#     sess.run(init)
+#     for i in range (1000):
+#         sess.run(train,{x:[1,2,3,4],y:[2,3,4,5]})
+#         print(sess.run([w,b]))
+#     # print (sess.run(loss,{x:[1,2,3,4],y:[2,3,4,5]}))
+#     print("hiiiiiiiiiiiiiiii")
